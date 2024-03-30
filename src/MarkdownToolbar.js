@@ -1,8 +1,13 @@
 import React from 'react';
+import downloadIcon from './download.png';
 import "./MarkdownToolbar.css";
-const MarkdownToolbar = ({ onInsert }) => {
+const MarkdownToolbar = ({ onInsert, onDownload}) => {
   const handleInsert = (value) => {
     onInsert(value);
+  };
+  
+  const handleDownload = () => {
+    onDownload();
   };
 
   return (
@@ -17,6 +22,9 @@ const MarkdownToolbar = ({ onInsert }) => {
       <button className="button-55" onClick={() => handleInsert('> ')}>Quote</button>
       <button className="button-55" onClick={() => handleInsert('![](http://)')}>Image</button>
       <button className="button-55" onClick={() => handleInsert('[](http://')}>Link</button>
+      <button className="button-55" onClick={handleDownload}>
+        <img className="img" src={downloadIcon} alt="download-output" />
+      </button>
     </div>
   );
 };
